@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- LINT FIXES, aman untuk Tailwind build (ikut ter-generate) ---- */
+@layer base {
+  /* 1) Standar-kan text-size-adjust */
+  :host, html {
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* 2) Tambahkan properti standard 'appearance' berdampingan dengan prefix
+        - Pakai 'none' jika kamu custom-style komponen form
+        - Ganti ke 'auto' kalau ingin tampilan native OS/browser */
+  button,
+  input[type="button"],
+  input[type="reset"],
+  input[type="submit"] {
+    appearance: none;
+    -webkit-appearance: button;
+    background-color: transparent;
+    background-image: none;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="url"],
+  input[type="tel"],
+  textarea,
+  select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+
+  input[type="search"] {
+    appearance: none;               /* ganti ke 'auto' jika mau native */
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+  }
+
+  ::-webkit-file-upload-button {
+    appearance: none;               /* atau 'auto' */
+    -webkit-appearance: button;
+    font: inherit;
+  }
+
+  /* 3) vertical-align pada elemen yang display:block (hilangkan warning) */
+  audio,
+  canvas,
+  embed,
+  iframe,
+  img,
+  object,
+  svg,
+  video {
+    vertical-align: baseline;       /* netral, tidak mengubah layout */
+  }
+}
+/* ---- END LINT FIXES ---- */

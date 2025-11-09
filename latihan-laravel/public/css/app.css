@@ -1,0 +1,61 @@
+/* 1) Standar-kan text-size-adjust (lint: compat-api/css) */
+:host,
+html {
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* 2) Tambahkan properti standard 'appearance' di samping prefiks
+   Gunakan 'none' saat kamu custom-style, atau 'auto' jika ingin look native. */
+
+/* Tombol & input button-like */
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  appearance: none;              /* standard */
+  -webkit-appearance: button;    /* legacy UA quirk fix */
+  background-color: transparent;
+  background-image: none;
+}
+
+/* Input textfield umum (kalau kamu ingin full custom look) */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="url"],
+input[type="tel"],
+textarea,
+select {
+  appearance: none;              /* standard: hilangkan native UI */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+/* Input pencarian: jaga konsistensi dengan WebKit value */
+input[type="search"] {
+  appearance: none;              /* ganti ke 'auto' kalau ingin native */
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+/* Tombol upload file default */
+::-webkit-file-upload-button {
+  appearance: none;              /* atau 'auto' jika ingin tampilan native */
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+/* 3) vertical-align pada elemen display:block (lint: propertyIgnoredDueToDisplay)
+   Set ke baseline untuk menonaktifkan warning tanpa mengubah layout. */
+audio,
+canvas,
+embed,
+iframe,
+img,
+object,
+svg,
+video {
+  vertical-align: baseline; /* sebelumnya: middle di sebagian preflight */
+}
